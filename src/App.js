@@ -10,7 +10,10 @@ import Container from "react-bootstrap/Container";
 class App extends React.Component {
   state = {
     employees: Employees,
-    search: ""
+    search: "",
+    sortByName: "ascending",
+    sortByOccupation: "ascending",
+    sortByLocation: "ascending",
   }
 
   handleInputChange = event => {
@@ -64,8 +67,90 @@ class App extends React.Component {
 
   handleSortClick = event => {
     event.preventDefault();
-    console.log("click");
-    console.log(this.state.name)
+
+    const header = event.target.getAttribute("name")
+
+    this.sorting(header);
+  }
+
+  sorting = type => {
+    console.log(type)
+    let employees = this.state.employees;
+
+    // Sorting by Name
+    if (type === "name") {
+      let sortByName = employees.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1
+        } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1
+        }
+        return 0;
+      })
+
+      if (this.state.sortByName === "ascending") {
+        this.setState({
+          employees: sortByName,
+          sortByName: "descending"
+        })
+      } else if (this.state.sortByName === "descending") {
+        sortByName = sortByName.reverse();
+        this.setState({
+          employees: sortByName,
+          sortByName: "ascending"
+        })
+      }
+    }
+
+    // Sorting by Occupation
+    if (type === "occupation") {
+      let sortByOccupation = employees.sort((a, b) => {
+        if (a.occupation.toLowerCase() < b.occupation.toLowerCase()) {
+          return -1
+        } else if (a.occupation.toLowerCase() > b.occupation.toLowerCase()) {
+          return 1
+        }
+        return 0;
+      })
+
+      if (this.state.sortByOccupation === "ascending") {
+        this.setState({
+          employees: sortByOccupation,
+          sortByOccupation: "descending"
+        })
+      } else if (this.state.sortByOccupation === "descending") {
+        sortByOccupation = sortByOccupation.reverse();
+        this.setState({
+          employees: sortByOccupation,
+          sortByOccupation: "ascending"
+        })
+      }
+    }
+
+    // Sorting by Location
+    if (type === "location") {
+      let sortByLocation = employees.sort((a, b) => {
+        if (a.location.toLowerCase() < b.location.toLowerCase()) {
+          return -1
+        } else if (a.location.toLowerCase() > b.location.toLowerCase()) {
+          return 1
+        }
+        return 0;
+      })
+
+      if (this.state.sortByLocation === "ascending") {
+        this.setState({
+          employees: sortByLocation,
+          sortByLocation: "descending"
+        })
+      } else if (this.state.sortByLocation === "descending") {
+        sortByLocation = sortByLocation.reverse();
+        this.setState({
+          employees: sortByLocation,
+          sortByLocation: "ascending"
+        })
+      }
+    }
   }
 
   render() {
