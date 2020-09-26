@@ -1,9 +1,10 @@
 import React from "react";
 import "./style.css";
+import Table from "react-bootstrap/Table";
 
-function Table(props) {
+function EmployeeTable(props) {
   return (
-    <table className="table table-striped bordered hover">
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>Image</th>
@@ -22,8 +23,8 @@ function Table(props) {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   )
 }
 
-export default Table;
+export default EmployeeTable;
