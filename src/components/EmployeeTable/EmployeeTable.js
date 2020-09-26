@@ -8,9 +8,24 @@ function EmployeeTable(props) {
       <thead>
         <tr>
           <th>Image</th>
-          <th onClick={props.handleSortClick}>Name</th>
-          <th onClick={props.handleSortClick}>Occupation</th>
-          <th onClick={props.handleSortClick}>Location</th>
+          <th
+            onClick={props.handleSortClick}
+            name="name"
+          >
+            Name
+          </th>
+          <th
+            onClick={props.handleSortClick}
+            name="occupation"
+          >
+            Occupation
+          </th>
+          <th
+            onClick={props.handleSortClick}
+            name="location"
+          >
+            Location
+          </th>
         </tr>
       </thead>
       <tbody>

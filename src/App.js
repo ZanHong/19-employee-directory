@@ -13,11 +13,6 @@ class App extends React.Component {
     search: ""
   }
 
-  handleSortClick = event => {
-    event.preventDefault();
-    console.log("click")
-  }
-
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
@@ -67,6 +62,11 @@ class App extends React.Component {
     }
   }
 
+  handleSortClick = event => {
+    event.preventDefault();
+    console.log("click");
+    console.log(this.state.name)
+  }
 
   render() {
 
